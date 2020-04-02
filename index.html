@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>News</title>
+
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=yes">
+
+    <link rel="stylesheet" href="Mobile_style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link href='https://fonts.googleapis.com/css?family=Quicksand:700' rel='stylesheet' type='text/css'>
+    <script src="https://kit.fontawesome.com/b5a9c45e36.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+
+    
+</head>
+<style>
+  .center {
+    
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  
+}
+.footer{
+    z-index: 500;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    position: fixed; /* Set the navbar to fixed position */
+    bottom: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    align-items: center;
+    text-align: center;
+    height: 20px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: #c02929;  
+    background-color: #c02929;
+    color: white;
+}
+.footext{
+   font-size: 10px;
+}
+
+.col-12{
+    z-index: 500;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    align-items: center;
+    text-align: center;
+    height: 54px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #c02929;
+    }
+.news{
+    padding: 0px 15px 20px 0px;;
+}
+.main {
+      margin-bottom: 25px;
+      margin-top: 54px; /* Add a top margin to avoid content overlay */
+      width: 100%;
+    }
+h1{
+        font-size: 12px;
+        text-align: center;
+        align-self: justify;
+        text-align: inherit;
+    }
+h3{
+        font-size: 20px;
+        text-align: center;
+        align-self: justify;
+        text-align: inherit;
+    }
+.col{
+        align-items: center;
+        text-align: bottom;
+    }
+.row{
+        border-bottom-style: solid;
+        border: 1px;
+        border-bottom-color: #c02929;
+    }
+html{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: small;
+    }
+    
+    .container{
+        margin: auto;
+        width: 100%;
+        padding: 0px 0px 0px 0px;
+    }
+    a:link { color: rgb(116, 116, 116); }
+    a:visited { color: rgb(116, 116, 116); }
+    a:hover { color: rgb(116, 116, 116); }
+    a:active { color: rgb(116, 116, 116); }
+    .col-8 {
+        border-color: black;
+        padding-left: 0em;
+    }
+input[type=text] {
+
+font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #c02929;
+  outline: 0;
+  font-size: 14px;
+  color: #c02929;
+  padding: 7px 0px 0px 5px;
+  background: transparent;
+  transition: border-color 0.2s;
+  }
+.btn{
+    color:#c02929 ;
+}
+form{
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+}
+
+
+    </style>    
+<body>
+    <div class="col-12">
+        <div class="row">
+           <div class="col-2">
+    <img src="img/news.png" height="50px">
+           </div>
+           <div class="col-10" class="left"> <h3>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-outline-danger btn-sm">
+                  <input type="radio" class="btn btn-outline-danger btn-sm" name="options" onclick="window.location.href = '?';" id="option1" checked> Top
+                </label>
+                <label class="btn btn-outline-danger btn-sm">
+                  <input type="radio" class="btn btn-outline-danger btn-sm" name="options" onclick="window.location.href = '?page=tech';" id="option2"> Tech
+                </label>
+                <label class="btn btn-outline-danger btn-sm">
+                  <input type="radio" class="btn btn-outline-danger btn-sm" name="options" onclick="window.location.href = '?page=science';" id="option3"> Science
+                </label>
+                <label class="btn btn-outline-danger btn-sm">
+                    <input type="radio" class="btn btn-outline-danger btn-sm" name="options" onclick="window.location.href = '?page=sports';" id="option4"> Sports
+                  </label>
+                  <label class="btn btn-outline-danger btn-sm">
+                    <input type="radio" class="btn btn-outline-danger btn-sm" name="options" onclick="window.location.href = '?page=health';" id="option5"> Health
+                  </label>
+                  <label class="btn btn-outline-danger btn-sm">
+                    <input type="radio" class="btn btn-outline-danger btn-sm" name="options" onclick="window.location.href = '?page=business';" id="option6"> Business
+                  </label>
+                  
+                  </div>
+                <div class="left">
+                   <form>
+            <div class="row">
+                <div class="col-4">
+                    <span id="update"></span> 
+                </div>
+                <div class="col-8">
+                    <input type="text" name="q" placeholder="Αναζήτηση...">
+                </div>
+            </div>
+                   </form> 
+                </div>
+</div>
+            
+          
+           
+        </div></div>
+            <div class="main">
+        <div class="tfclear"></div>
+        </div>
+        
+       
+        <div class="container" id="data"></div>
+        <div class="news" id="news"></div>
+        <div class="container" id="show"></div>
+      
+
+        
+ <div class="footer" >
+  <!--   <marquee class="bg-danger text-white" behavior="scroll" direction="left" scrollamount="1"></marquee>-->
+ <span class="footext" id="crypto"></span><span class="footext" id="scroll"></span>
+    
+    </div>
+        <script type="text/javascript" charset="utf-8">
+
+let api, page, q;
+const version = "news.0.15.apk";
+
+document.addEventListener("deviceready", onDeviceReady, false);
+    
+function onDeviceReady() {
+
+        update();
+        footerscroll();
+        marketcap();
+
+        var id = getQueryVariable("id");
+        if (id !=''){
+            shownews();
+        }else{
+            show();
+        }
+}
+
+function pageshow(){
+q =  getQueryVariable("q");  
+page = getQueryVariable("page");
+    if (page == "tech"){
+api = "https://newsapi.org/v2/top-headlines?country=gr&category=technology&apiKey=425c786889fc4a2a953e1ed73f2066d9";
+    } else if (page == "science") {
+api = "https://newsapi.org/v2/top-headlines?country=gr&category=science&apiKey=425c786889fc4a2a953e1ed73f2066d9";
+} else if (page == "sports") {
+api = "https://newsapi.org/v2/top-headlines?country=gr&category=sports&apiKey=425c786889fc4a2a953e1ed73f2066d9";
+} else if (page == "health") {
+api = "https://newsapi.org/v2/top-headlines?country=gr&category=health&apiKey=425c786889fc4a2a953e1ed73f2066d9";
+} else if (page == "business") {
+api = "https://newsapi.org/v2/top-headlines?country=gr&category=business&apiKey=425c786889fc4a2a953e1ed73f2066d9";
+} else if (q != '') {
+    const d = new Date()
+    const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d)
+    const mo = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(d)
+    const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d)
+            const fromday = ye+'-'+mo-1+'-'+da ;
+api = 'https://newsapi.org/v2/everything?'+'q='+q+'&'+'from='+fromday+'&'+'sortBy=popularity&'+'apiKey=425c786889fc4a2a953e1ed73f2066d9';
+} else {
+api = "https://newsapi.org/v2/top-headlines?country=gr&apiKey=425c786889fc4a2a953e1ed73f2066d9";
+    }   
+}
+
+
+//  const api = "https://chrislarry.github.io/news/news.json";
+
+function getQueryVariable(variable){
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+
+
+
+function update(){            
+                fetch("https://chrislarry.github.io/index.json")
+                .then(response => response.json())
+                .then(data => {
+                if (data.articles[1].download!= version) {
+                    document.getElementById('update').innerHTML=`
+<center><a class="btn btn-outline-danger btn-sm" href="https://chrislarry.github.io/download/${data.articles[1].download}" role="button" style="color: #c02929;">Update <i class="fas fa-cloud-download-alt"></i></a></center?>`;
+                }
+ });
+}
+
+    
+    function shownews(){
+    pageshow();    
+        fetch(api)
+        .then(response => response.json())
+        .then(data => {
+
+            var i = getQueryVariable("id");
+            
+            if(data.articles[i].urlToImage == null){
+                     img="./img/noimage.jpg";
+                 }else{
+                     img=data.articles[i].urlToImage;
+                 }
+        document.getElementById('show').innerHTML= `
+      
+      <img src="${img}" width="100%"><br>
+      <h1> ${data.articles[i].title} </h1>
+      <p> 
+      ${data.articles[i].description}<br>
+      <em>Εκδόθηκε ${data.articles[i].publishedAt} από ${data.articles[i].source.name}</em><br>
+      <br><center><a href="${data.articles[i].url}" class="btn btn-outline-danger btn-sm" role="button" aria-pressed="true">Περισσότερα</a></center> 
+      </p>
+      `;
+    });
+    }
+    
+    function show(){
+    pageshow();
+    fetch(api)
+    .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    appendData(data);
+                })
+                .catch(function (err) {
+                    console.log('error: ' + err);
+                });
+    
+    function appendData(data) {
+        
+                var mainContainer = document.getElementById("news");
+                for (var i = 0; i < data.articles.length; i++) {
+                    if(data.articles[i].urlToImage == null){
+                 img="./img/noimage.jpg";
+                     }else{
+                 img=data.articles[i].urlToImage;
+             }
+                 var div = document.createElement("div");
+ var pageset, qset, q, page;
+ q =  getQueryVariable("q");  
+page = getQueryVariable("page");
+pageset = "&page="+page;
+qset = "&q="+q;
+ if (q == '' && page==''){
+    div.innerHTML = `
+                <div class="row">    
+        <div class="col-4"><a href="?id=${i}">
+        <img src="${img}" width="100%"></a>  </div>
+        <div class="col-8"><a href="?id=${i}">
+        <h1>${data.articles[i].title}</h1></a> </div>
+                </div>  `;
+
+
+ } else{
+                div.innerHTML = `
+                <div class="row">    
+        <div class="col-4"><a href="?id=${i}${pageset}${qset}">
+        <img src="${img}" width="100%"></a>  </div>
+        <div class="col-8"><a href="?id=${i}${pageset}${qset}">
+        <h1>${data.articles[i].title}</h1></a> </div>
+                </div>  `;
+                
+ }
+                    mainContainer.appendChild(div);
+                }}
+}
+
+function footerscroll(){
+//https://api.openrates.io/latest
+//https://www.floatrates.com/daily/eur.json
+    fetch('https://api.openrates.io/latest')
+        .then(response => response.json())
+        .then(data => {
+
+
+            document.getElementById('scroll').innerHTML=`
+             USD:${data.rates.USD.toFixed(2)}€
+             GBP:${data.rates.GBP.toFixed(2)}€
+             JPY:${data.rates.JPY.toFixed(2)}€
+                    `;
+        });
+}       
+    
+function marketcap(){
+  //API KEY 9ef00d33-e37a-4a19-83ff-a546c57e0d14
+    fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=9ef00d33-e37a-4a19-83ff-a546c57e0d14')
+    .then(response => response.json())
+    .then(data=> { 
+        const d = new Date();
+        const ww = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(d);    
+        const yy = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
+        const mm = new Intl.DateTimeFormat('en', { month: 'long' }).format(d);
+        const dd = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
+        const day = ww+' '+dd+' '+mm+' '+yy ;
+
+        document.getElementById('crypto').innerHTML = `
+        BTC:${data.data[0].quote.USD.price.toFixed(0)}$
+        ETH:${data.data[1].quote.USD.price.toFixed(0)}$
+        ETC:${data.data[20].quote.USD.price.toFixed(2)}$
+        XMR:${data.data[11].quote.USD.price.toFixed(2)}$
+
+        `;
+    });
+}
+    
+    
+    
+        </script>
+  
+</body>
+</html>
